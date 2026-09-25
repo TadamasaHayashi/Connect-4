@@ -8,6 +8,7 @@ public class ConnectFour
 				String[][] board = prepareBoard();
 				displayBoard(board);
 				playGame();
+				//gtnhbgfnhgnhutfgbv kiuyjhg
 			}
 		private static String[][] prepareBoard()
 			{
