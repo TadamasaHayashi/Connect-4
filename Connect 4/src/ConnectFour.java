@@ -7,8 +7,27 @@ public class ConnectFour
 			{
 				String[][] board = prepareBoard();
 				displayBoard(board);
-				playGame();
-				//gtnhbgfnhgnhutfgbv kiuyjhg
+				playGame(board);
+				isWonGame(board);
+			}
+		private static void isWonGame(String[][] board)
+			{
+				if		
+				// Tic tac toe code
+				((board[0][0].equals(board[0][1]) && board[0][1].equals(board[0][2]) && !board[0][1].equals(" ")) ||
+				(board[1][0].equals(board[1][1]) && board[1][1].equals(board[1][2]) && !board[1][1].equals(" ")) ||
+				(board[2][0].equals(board[2][1]) && board[2][1].equals(board[2][2]) && !board[2][1].equals(" ")) ||
+				(board[0][0].equals(board[1][0]) && board[1][0].equals(board[2][0]) && !board[1][0].equals(" ")) ||				
+				(board[0][1].equals(board[1][1]) && board[1][1].equals(board[2][1]) && !board[1][1].equals(" ")) ||
+				(board[0][2].equals(board[1][2]) && board[1][2].equals(board[2][2]) && !board[1][2].equals(" ")) ||
+				(board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2]) && !board[1][1].equals(" ")) ||
+				(board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0]) && !board[1][1].equals(" ")))
+						{
+						System.out.println("The game is over!");
+						System.exit(0);
+						}
+
+				
 			}
 		private static String[][] prepareBoard()
 			{
@@ -41,17 +60,21 @@ public class ConnectFour
 		
 		private static void playGame(String[][] board)
 			{
-				Scanner userStringInput= new Scanner (System.in);
+			Scanner input= new Scanner (System.in);
 			System.out.println("Do you want to play as Xs or Os");
-			String letter = userStringInput.nextLine();
-			String location = letter.toUpperCase();
-			if (location.equals("X"))
+			String currentPlayer = input.nextLine().toUpperCase();
+			
+			while(!currentPlayer.equals("X") && !currentPlayer.equals("O"))
 				{
-				System.out.println("You are now playing as Xs");
+				System.out.println("Please choose a valid player");
+				currentPlayer= input.nextLine().toUpperCase();
 				}
-			if(location.equals("O"))
+			int turns = 0;
+			boolean gameWon = false;
+			
+			while (!gameWon && turns < 42)
 				{
-				System.out.println("You are now playing as Os");
+					System.out.println("Its player " );
 				}
 			}
 	}
