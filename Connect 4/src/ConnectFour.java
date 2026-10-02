@@ -8,25 +8,48 @@ public class ConnectFour
 				String[][] board = prepareBoard();
 				displayBoard(board);
 				playGame(board);
-				isWonGame(board);
 			}
-		private static void isWonGame(String[][] board)
+		private static boolean dropPiece(String[][] board, int col,String currentPlayer)
+		{
+		for (int row = 5; row>= 0; row--)
 			{
-				if		
-				// Tic tac toe code
-				((board[0][0].equals(board[0][1]) && board[0][1].equals(board[0][2]) && !board[0][1].equals(" ")) ||
-				(board[1][0].equals(board[1][1]) && board[1][1].equals(board[1][2]) && !board[1][1].equals(" ")) ||
-				(board[2][0].equals(board[2][1]) && board[2][1].equals(board[2][2]) && !board[2][1].equals(" ")) ||
-				(board[0][0].equals(board[1][0]) && board[1][0].equals(board[2][0]) && !board[1][0].equals(" ")) ||				
-				(board[0][1].equals(board[1][1]) && board[1][1].equals(board[2][1]) && !board[1][1].equals(" ")) ||
-				(board[0][2].equals(board[1][2]) && board[1][2].equals(board[2][2]) && !board[1][2].equals(" ")) ||
-				(board[0][0].equals(board[1][1]) && board[1][1].equals(board[2][2]) && !board[1][1].equals(" ")) ||
-				(board[0][2].equals(board[1][1]) && board[1][1].equals(board[2][0]) && !board[1][1].equals(" ")))
+				if(board[row][col].equals(" "))
+					{
+					board[row][col] = currentPlayer;
+					return true;
+					}
+			}
+		return false;
+		}
+		
+		// redo
+		private static boolean isWonGame(String[][] board, String currentPlayer)
+			{
+				for (int row = 0; row< 6; row++)
+					{
+					for (int col = 0; col < 4; col++)
 						{
-						System.out.println("The game is over!");
-						System.exit(0);
+							if 
+							(board[row][col].equals(currentPlayer) && board[row][col + 1].equals(currentPlayer) &&
+									board[row][col + 2].equals(currentPlayer) && board[row][col + 3].equals(currentPlayer));
 						}
-
+						{
+							return true;
+						}
+					}
+				for (int row = 0; row<3; row++)
+					{
+					for (int col = 0; col<7; col++)
+						{
+						if (board[row][col].equals(currentPlayer) && board[row + 1][col].equals(currentPlayer) &&
+							board[row + 2][col].equals(currentPlayer) && board[row + 3][col].equals(currentPlayer));
+						}
+							{
+								return true;
+							}
+					}
+				
+				return false;
 				
 			}
 		private static String[][] prepareBoard()
@@ -63,7 +86,6 @@ public class ConnectFour
 			Scanner input= new Scanner (System.in);
 			System.out.println("Do you want to play as Xs or Os");
 			String currentPlayer = input.nextLine().toUpperCase();
-			
 			while(!currentPlayer.equals("X") && !currentPlayer.equals("O"))
 				{
 				System.out.println("Please choose a valid player");
@@ -74,7 +96,51 @@ public class ConnectFour
 			
 			while (!gameWon && turns < 42)
 				{
-					System.out.println("Its player " );
+					System.out.println("Its player " + currentPlayer + "'s turn");
+					System.out.println("Choose a column (A-G): ");
+						displayBoard(board);
+					String colInput = input.nextLine().toUpperCase();
+					int colIndex = -1;
+					switch(colInput)
+					{
+						case "A": colIndex = 0; break;
+						case "B": colIndex = 1; break;
+						case "C": colIndex = 2; break;
+						case "D": colIndex = 3; break;
+						case "E": colIndex = 4; break;
+						case "F": colIndex = 5; break;
+						case "G": colIndex = 6; break;
+						default:
+							System.out.println("Please enter a valid column");
+							continue;
+					}
+					boolean success = dropPiece(board, colIndex,currentPlayer);
+						{
+					if (!success)
+						{
+						System.out.println("Col " + colInput + " is full");
+						}
+					turns++;
+					if(!isWonGame(board,currentPlayer))
+						{
+							System.out.println(currentPlayer + " wins");
+							gameWon = true;
+						}
+					else
+						{
+						if(currentPlayer.equals("X"))
+							{
+								currentPlayer = "O";
+							}
+						else
+							{
+							currentPlayer = "X";
+							}
+						}
+						}
 				}
-			}
+					
+					
+				}
 	}
+	
