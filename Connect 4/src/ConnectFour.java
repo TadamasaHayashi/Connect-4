@@ -1,8 +1,6 @@
 import java.util.Scanner;
-
 public class ConnectFour
 	{
-
 		public static void main(String[] args)
 			{
 				String[][] board = prepareBoard();
@@ -21,33 +19,69 @@ public class ConnectFour
 			}
 		return false;
 		}
+		//Hello
 		
-		// redo
 		private static boolean isWonGame(String[][] board, String currentPlayer)
 			{
 				for (int row = 0; row< 6; row++)
 					{
 					for (int col = 0; col < 4; col++)
 						{
-							if 
-							(board[row][col].equals(currentPlayer) && board[row][col + 1].equals(currentPlayer) &&
-									board[row][col + 2].equals(currentPlayer) && board[row][col + 3].equals(currentPlayer));
-						}
-						{
+							if
+							(board[row][col].equals(currentPlayer) &&
+							board[row][col + 1].equals(currentPlayer) &&
+							board[row][col + 2].equals(currentPlayer) &&
+							board[row][col + 3].equals(currentPlayer))
+							{
 							return true;
+							}
 						}
 					}
 				for (int row = 0; row<3; row++)
 					{
 					for (int col = 0; col<7; col++)
 						{
-						if (board[row][col].equals(currentPlayer) && board[row + 1][col].equals(currentPlayer) &&
-							board[row + 2][col].equals(currentPlayer) && board[row + 3][col].equals(currentPlayer));
-						}
+						if (board[row][col].equals(currentPlayer) &&
+							board[row + 1][col].equals(currentPlayer) &&
+							board[row + 2][col].equals(currentPlayer) &&
+							board[row + 3][col].equals(currentPlayer))
+						
 							{
 								return true;
 							}
+						}
 					}
+				
+				for (int row = 0; row< 3; row++)
+				{
+					for (int col = 0; col<4; col++)
+					{
+						if
+						(board[row][col].equals(currentPlayer) &&
+						board[row + 1][col + 1].equals(currentPlayer) &&
+						board[row + 2][col + 2].equals(currentPlayer) &&
+						board[row + 3][col + 3].equals(currentPlayer))
+						{
+							return true;
+						}	
+						
+					}
+				}
+				for (int row=3; row <6; row++)
+				{
+					for (int col = 0; col< 4; col ++)
+					{
+						if
+						(board[row][col].equals(currentPlayer)&&
+						board [row - 1][col + 1].equals(currentPlayer)&&
+						board [row - 2][col + 2].equals(currentPlayer)&&
+						board [row - 3][col + 3].equals(currentPlayer))
+						{
+							return true;
+						}
+					}
+					
+				}
 				
 				return false;
 				
@@ -65,17 +99,16 @@ public class ConnectFour
 					}
 				return board;
 			}
-
 		private static void displayBoard(String[][] board)
 			{
 				
 				System.out.println("  |  A  |  B  |  C  |  D  |  E  |  F  |  G  | ");
 				System.out.println("1 |  " + board[0][0] + "  |  " + board[0][1] + "  |  " + board[0][2] + "  |  " + board[0][3] + "  |  " + board[0][4] + "  |  "+ board[0][5] + "  |  "+ board[0][6] + "  | ");
-				System.out.println("2 |  " + board[1][0] + "  |  " + board[1][1] + "  |  " + board[1][2] + "  |  " + board[1][3] + "  |  " + board[1][4] + "  |  "+ board[1][5] + "  |  "+ board[1][5] + "  | ");
-				System.out.println("3 |  " + board[2][0] + "  |  " + board[2][1] + "  |  " + board[2][2] + "  |  " + board[2][3] + "  |  " + board[2][4] + "  |  "+ board[2][5] + "  |  "+ board[2][5] + "  | ");
-				System.out.println("4 |  " + board[3][0] + "  |  " + board[3][1] + "  |  " + board[3][2] + "  |  " + board[3][3] + "  |  " + board[3][4] + "  |  "+ board[3][5] + "  |  "+ board[3][5] + "  | ");
-				System.out.println("5 |  " + board[4][0] + "  |  " + board[4][1] + "  |  " + board[4][2] + "  |  " + board[4][3] + "  |  " + board[4][4] + "  |  "+ board[4][5] + "  |  "+ board[4][5] + "  | ");
-				System.out.println("6 |  " + board[5][0] + "  |  " + board[5][1] + "  |  " + board[5][2] + "  |  " + board[5][3] + "  |  " + board[5][4] + "  |  "+ board[5][5] + "  |  "+ board[5][5] + "  | ");
+				System.out.println("2 |  " + board[1][0] + "  |  " + board[1][1] + "  |  " + board[1][2] + "  |  " + board[1][3] + "  |  " + board[1][4] + "  |  "+ board[1][5] + "  |  "+ board[1][6] + "  | ");
+				System.out.println("3 |  " + board[2][0] + "  |  " + board[2][1] + "  |  " + board[2][2] + "  |  " + board[2][3] + "  |  " + board[2][4] + "  |  "+ board[2][5] + "  |  "+ board[2][6] + "  | ");
+				System.out.println("4 |  " + board[3][0] + "  |  " + board[3][1] + "  |  " + board[3][2] + "  |  " + board[3][3] + "  |  " + board[3][4] + "  |  "+ board[3][5] + "  |  "+ board[3][6] + "  | ");
+				System.out.println("5 |  " + board[4][0] + "  |  " + board[4][1] + "  |  " + board[4][2] + "  |  " + board[4][3] + "  |  " + board[4][4] + "  |  "+ board[4][5] + "  |  "+ board[4][6] + "  | ");
+				System.out.println("6 |  " + board[5][0] + "  |  " + board[5][1] + "  |  " + board[5][2] + "  |  " + board[5][3] + "  |  " + board[5][4] + "  |  "+ board[5][5] + "  |  "+ board[5][6] + "  | ");
 				
 				
 				
@@ -101,6 +134,7 @@ public class ConnectFour
 						displayBoard(board);
 					String colInput = input.nextLine().toUpperCase();
 					int colIndex = -1;
+					// invalid column because arrays can not go past 0
 					switch(colInput)
 					{
 						case "A": colIndex = 0; break;
@@ -115,14 +149,18 @@ public class ConnectFour
 							continue;
 					}
 					boolean success = dropPiece(board, colIndex,currentPlayer);
+					// makes it so that if a piece is dropped its either true or false. declares the board,
+					//the number the column is on and what the current player is.
 						{
 					if (!success)
 						{
 						System.out.println("Col " + colInput + " is full");
+						continue;
 						}
 					turns++;
-					if(!isWonGame(board,currentPlayer))
+					if(isWonGame(board,currentPlayer))
 						{
+						displayBoard(board);
 							System.out.println(currentPlayer + " wins");
 							gameWon = true;
 						}
@@ -144,3 +182,4 @@ public class ConnectFour
 				}
 	}
 	
+
