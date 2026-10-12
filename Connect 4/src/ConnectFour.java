@@ -144,6 +144,7 @@ public class ConnectFour
 						case "E": colIndex = 4; break;
 						case "F": colIndex = 5; break;
 						case "G": colIndex = 6; break;
+						//
 						default:
 							System.out.println("Please enter a valid column");
 							continue;
